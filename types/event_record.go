@@ -83,7 +83,6 @@ type EventRecords struct {
 	Staking_Slash                      []EventStakingSlash                      //nolint:stylecheck,golint
 	Staking_OldSlashingReportDiscarded []EventStakingOldSlashingReportDiscarded //nolint:stylecheck,golint
 	Staking_StakingElection            []EventStakingStakingElection            //nolint:stylecheck,golint
-	Staking_SolutionStored             []EventStakingSolutionStored             //nolint:stylecheck,golint
 	Staking_Bonded                     []EventStakingBonded                     //nolint:stylecheck,golint
 	Staking_Unbonded                   []EventStakingUnbonded                   //nolint:stylecheck,golint
 	Staking_Withdrawn                  []EventStakingWithdrawn                  //nolint:stylecheck,golint
@@ -137,8 +136,6 @@ type EventRecords struct {
 	Elections_EmptyTerm                []EventElectionsEmptyTerm                //nolint:stylecheck,golint
 	Elections_ElectionError            []EventElectionsElectionError            //nolint:stylecheck,golint
 	Elections_MemberKicked             []EventElectionsMemberKicked             //nolint:stylecheck,golint
-	Elections_MemberRenounced          []EventElectionsMemberRenounced          //nolint:stylecheck,golint
-	Elections_VoterReported            []EventElectionsVoterReported            //nolint:stylecheck,golint
 	Identity_IdentitySet               []EventIdentitySet                       //nolint:stylecheck,golint
 	Identity_IdentityCleared           []EventIdentityCleared                   //nolint:stylecheck,golint
 	Identity_IdentityKilled            []EventIdentityKilled                    //nolint:stylecheck,golint
@@ -189,23 +186,11 @@ type EventRecords struct {
 	Treasury_Burnt                     []EventTreasuryBurnt                     //nolint:stylecheck,golint
 	Treasury_Rollover                  []EventTreasuryRollover                  //nolint:stylecheck,golint
 	Treasury_Deposit                   []EventTreasuryDeposit                   //nolint:stylecheck,golint
-	Treasury_NewTip                    []EventTreasuryNewTip                    //nolint:stylecheck,golint
-	Treasury_TipClosing                []EventTreasuryTipClosing                //nolint:stylecheck,golint
-	Treasury_TipClosed                 []EventTreasuryTipClosed                 //nolint:stylecheck,golint
-	Treasury_TipRetracted              []EventTreasuryTipRetracted              //nolint:stylecheck,golint
-	Treasury_BountyProposed            []EventTreasuryBountyProposed            //nolint:stylecheck,golint
-	Treasury_BountyRejected            []EventTreasuryBountyRejected            //nolint:stylecheck,golint
-	Treasury_BountyBecameActive        []EventTreasuryBountyBecameActive        //nolint:stylecheck,golint
-	Treasury_BountyAwarded             []EventTreasuryBountyAwarded             //nolint:stylecheck,golint
-	Treasury_BountyClaimed             []EventTreasuryBountyClaimed             //nolint:stylecheck,golint
-	Treasury_BountyCanceled            []EventTreasuryBountyCanceled            //nolint:stylecheck,golint
-	Treasury_BountyExtended            []EventTreasuryBountyExtended            //nolint:stylecheck,golint
 	Contracts_Instantiated             []EventContractsInstantiated             //nolint:stylecheck,golint
 	Contracts_Evicted                  []EventContractsEvicted                  //nolint:stylecheck,golint
 	Contracts_Restored                 []EventContractsRestored                 //nolint:stylecheck,golint
 	Contracts_CodeStored               []EventContractsCodeStored               //nolint:stylecheck,golint
 	Contracts_ScheduleUpdated          []EventContractsScheduleUpdated          //nolint:stylecheck,golint
-	Contracts_ContractExecution        []EventContractsContractExecution        //nolint:stylecheck,golint
 	Utility_BatchInterrupted           []EventUtilityBatchInterrupted           //nolint:stylecheck,golint
 	Utility_BatchCompleted             []EventUtilityBatchCompleted             //nolint:stylecheck,golint
 	Multisig_NewMultisig               []EventMultisigNewMultisig               //nolint:stylecheck,golint
@@ -276,7 +261,7 @@ func (e EventRecordsRaw) DecodeEventRecords(m *Metadata, t interface{}) error {
 		moduleName, eventName, err := m.FindEventNamesForEventID(id)
 		// moduleName, eventName, err := "System", "ExtrinsicSuccess", nil
 		if err != nil {
-			return fmt.Errorf("unable to find event with EventID %v in metadata for event #%v: %s", id, i, err)
+			return err
 		}
 
 		log.Debug(fmt.Sprintf("event #%v is in module %v with event name %v", i, moduleName, eventName))
@@ -383,29 +368,38 @@ func (p Phase) Encode(encoder scale.Encoder) error {
 
 // DispatchError is an error occurring during extrinsic dispatch
 type DispatchError struct {
-	HasModule bool
-	Module    uint8
-	Error     uint8
+	Error              uint8
+	HasModule          bool
+	Module             uint8
+	ModuleError        uint8
+	HasTokenError      bool
+	TokenError         uint8
+	HasArithmeticError bool
+	ArithmeticError    uint8
 }
 
 func (d *DispatchError) Decode(decoder scale.Decoder) error {
-	b, err := decoder.ReadOneByte()
+	err := decoder.Decode(&d.Error)
 	if err != nil {
 		return err
 	}
 
-	// https://github.com/paritytech/substrate/blob/4da29261bfdc13057a425c1721aeb4ec68092d42/primitives/runtime/src/lib.rs
-	// Line 391
 	// Enum index 3 for Module Error
-	if b == 3 {
+	if d.Error == 3 {
 		d.HasModule = true
 		err = decoder.Decode(&d.Module)
+		if err != nil {
+			return err
+		}
+		err = decoder.Decode(&d.ModuleError)
+	} else if d.Error == 6 {
+		d.HasTokenError = true
+		err = decoder.Decode(&d.TokenError)
+	} else if d.Error == 7 {
+		d.HasArithmeticError = true
+		err = decoder.Decode(&d.ArithmeticError)
 	}
-	if err != nil {
-		return err
-	}
-
-	return decoder.Decode(&d.Error)
+	return err
 }
 
 func (d DispatchError) Encode(encoder scale.Encoder) error {
@@ -416,15 +410,26 @@ func (d DispatchError) Encode(encoder scale.Encoder) error {
 			return err
 		}
 		err = encoder.Encode(d.Module)
+		if err != nil {
+			return err
+		}
+		err = encoder.Encode(d.ModuleError)
+	} else if d.HasTokenError {
+		err = encoder.PushByte(6)
+		if err != nil {
+			return err
+		}
+		err = encoder.PushByte(d.TokenError)
+	} else if d.HasArithmeticError {
+		err = encoder.PushByte(7)
+		if err != nil {
+			return err
+		}
+		err = encoder.PushByte(d.ArithmeticError)
 	} else {
-		err = encoder.PushByte(0)
+		err = encoder.PushByte(d.Error)
 	}
-
-	if err != nil {
-		return err
-	}
-
-	return encoder.Encode(&d.Error)
+	return err
 }
 
 type EventID [2]byte

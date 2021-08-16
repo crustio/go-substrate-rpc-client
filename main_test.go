@@ -19,7 +19,6 @@ package gsrpc_test
 import (
 	"fmt"
 	"math/big"
-	"time"
 
 	gsrpc "github.com/crustio/go-substrate-rpc-client/v3"
 	"github.com/crustio/go-substrate-rpc-client/v3/config"
@@ -192,13 +191,16 @@ func Example_makeASimpleTransfer() {
 		panic(err)
 	}
 
+	opts := types.SerDeOptions{NoPalletIndices: true}
+	types.SetSerDeOptions(opts)
+
 	meta, err := api.RPC.State.GetMetadataLatest()
 	if err != nil {
 		panic(err)
 	}
 
 	// Create a call, transferring 12345 units to Bob
-	bob, err := types.NewMultiAddressFromHexAccountID("0x8eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48")
+	bob, err := types.NewAddressFromHexAccountID("0x8eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48")
 	if err != nil {
 		panic(err)
 	}
