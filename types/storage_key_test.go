@@ -18,12 +18,12 @@ package types_test
 
 import (
 	"encoding/binary"
-	"github.com/crustio/go-substrate-rpc-client/v3/hash"
-	"github.com/crustio/go-substrate-rpc-client/v3/xxhash"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/hash"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/xxhash"
 	"strings"
 	"testing"
 
-	. "github.com/crustio/go-substrate-rpc-client/v3/types"
+	. "github.com/MyronFanQiu/go-substrate-rpc-client/v3/types"
 	"github.com/stretchr/testify/assert"
 )
 

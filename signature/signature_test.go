@@ -20,8 +20,8 @@ import (
 	"crypto/rand"
 	"testing"
 
-	. "github.com/crustio/go-substrate-rpc-client/v3/signature"
-	"github.com/crustio/go-substrate-rpc-client/v3/types"
+	. "github.com/MyronFanQiu/go-substrate-rpc-client/v3/signature"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/types"
 	"github.com/stretchr/testify/assert"
 )
 

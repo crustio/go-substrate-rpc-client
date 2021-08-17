@@ -22,9 +22,9 @@ import (
 	"hash"
 	"strings"
 
-	ghash "github.com/crustio/go-substrate-rpc-client/v3/hash"
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
-	"github.com/crustio/go-substrate-rpc-client/v3/xxhash"
+	ghash "github.com/MyronFanQiu/go-substrate-rpc-client/v3/hash"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/xxhash"
 )
 
 // Modelled after packages/types/src/Metadata/v10/Metadata.ts

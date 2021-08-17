@@ -17,8 +17,8 @@
 package gsrpc
 
 import (
-	"github.com/crustio/go-substrate-rpc-client/v3/client"
-	"github.com/crustio/go-substrate-rpc-client/v3/rpc"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/client"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/rpc"
 )
 
 type SubstrateAPI struct {

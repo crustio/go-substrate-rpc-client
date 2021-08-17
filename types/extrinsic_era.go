@@ -17,7 +17,7 @@
 package types
 
 import (
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
 )
 
 // ExtrinsicEra indicates either a mortal or immortal extrinsic

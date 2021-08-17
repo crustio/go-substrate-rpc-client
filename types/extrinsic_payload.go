@@ -19,8 +19,8 @@ package types
 import (
 	"fmt"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
-	"github.com/crustio/go-substrate-rpc-client/v3/signature"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/signature"
 )
 
 // ExtrinsicPayloadV3 is a signing payload for an Extrinsic. For the final encoding, it is variable length based on

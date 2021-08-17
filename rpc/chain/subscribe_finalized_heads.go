@@ -20,9 +20,9 @@ import (
 	"context"
 	"sync"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/config"
-	gethrpc "github.com/crustio/go-substrate-rpc-client/v3/gethrpc"
-	"github.com/crustio/go-substrate-rpc-client/v3/types"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/config"
+	gethrpc "github.com/MyronFanQiu/go-substrate-rpc-client/v3/gethrpc"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/types"
 )
 
 // FinalizedHeadsSubscription is a subscription established through one of the Client's subscribe methods.

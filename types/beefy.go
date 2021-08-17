@@ -16,7 +16,7 @@
 
 package types
 
-import "github.com/crustio/go-substrate-rpc-client/v3/scale"
+import "github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
 
 // Commitment is a beefy commitment
 type Commitment struct {

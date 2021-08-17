@@ -23,7 +23,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
 	"golang.org/x/crypto/blake2b"
 )
 
