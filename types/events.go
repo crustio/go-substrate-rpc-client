@@ -22,15 +22,6 @@ import (
 	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
 )
 
-// EventClaimsClaimed is emitted when an account claims some DOTs
-type EventClaimsClaimed struct {
-	Phase           Phase
-	Who             AccountID
-	EthereumAddress H160
-	Amount          U128
-	Topics          []Hash
-}
-
 // EventBalancesEndowed is emitted when an account is created with some free balance
 type EventBalancesEndowed struct {
 	Phase   Phase
