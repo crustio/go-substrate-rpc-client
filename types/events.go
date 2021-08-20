@@ -671,7 +671,7 @@ type EventDemocracyVetoed struct {
 	Phase       Phase
 	Who         AccountID
 	Hash        Hash
-	BlockNumber BlockNumber
+	BlockNumber U32
 	Topics      []Hash
 }
 
@@ -1224,7 +1224,7 @@ type EventVestingVestingCompleted struct {
 // EventSchedulerScheduled is emitted when scheduled some task
 type EventSchedulerScheduled struct {
 	Phase  Phase
-	When   BlockNumber
+	When   U32
 	Index  U32
 	Topics []Hash
 }
@@ -1232,7 +1232,7 @@ type EventSchedulerScheduled struct {
 // EventSchedulerCanceled is emitted when canceled some task
 type EventSchedulerCanceled struct {
 	Phase  Phase
-	When   BlockNumber
+	When   U32
 	Index  U32
 	Topics []Hash
 }
@@ -1562,7 +1562,7 @@ type TimePoint struct {
 
 // TaskAddress holds the location of a scheduled task that can be used to remove it
 type TaskAddress struct {
-	When  BlockNumber
+	When  U32
 	Index U32
 }
 
