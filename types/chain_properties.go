@@ -17,7 +17,7 @@
 package types
 
 import (
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v3/scale"
 )
 
 // ChainProperties contains the SS58 format, the token decimals and the token symbol

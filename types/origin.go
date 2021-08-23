@@ -17,7 +17,7 @@
 package types
 
 import (
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v3/scale"
 )
 
 // Origin is an internal-only value that will be ignored when encoding/decoding

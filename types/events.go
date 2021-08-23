@@ -19,7 +19,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v3/scale"
 )
 
 // EventBalancesEndowed is emitted when an account is created with some free balance

@@ -21,8 +21,8 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
-	. "github.com/MyronFanQiu/go-substrate-rpc-client/v3/types"
+	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	. "github.com/crustio/go-substrate-rpc-client/v3/types"
 	"github.com/stretchr/testify/assert"
 )
 

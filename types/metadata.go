@@ -19,7 +19,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v3/scale"
 )
 
 const MagicNumber uint32 = 0x6174656d

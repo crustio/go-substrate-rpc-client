@@ -4,8 +4,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/client"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/config"
+	"github.com/crustio/go-substrate-rpc-client/v3/client"
+	"github.com/crustio/go-substrate-rpc-client/v3/config"
 )
 
 var offchain *Offchain

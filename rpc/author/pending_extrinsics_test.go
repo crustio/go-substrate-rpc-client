@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"testing"
 
-	gsrpc "github.com/MyronFanQiu/go-substrate-rpc-client/v3"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/config"
+	gsrpc "github.com/crustio/go-substrate-rpc-client/v3"
+	"github.com/crustio/go-substrate-rpc-client/v3/config"
 	"github.com/stretchr/testify/assert"
 )
 

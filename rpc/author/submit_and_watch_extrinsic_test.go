@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"testing"
 
-	gsrpc "github.com/MyronFanQiu/go-substrate-rpc-client/v3"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/config"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/rpc/author"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/signature"
-	"github.com/MyronFanQiu/go-substrate-rpc-client/v3/types"
+	gsrpc "github.com/crustio/go-substrate-rpc-client/v3"
+	"github.com/crustio/go-substrate-rpc-client/v3/config"
+	"github.com/crustio/go-substrate-rpc-client/v3/rpc/author"
+	"github.com/crustio/go-substrate-rpc-client/v3/signature"
+	"github.com/crustio/go-substrate-rpc-client/v3/types"
 	"github.com/stretchr/testify/assert"
 )
 
