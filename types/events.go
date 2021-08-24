@@ -648,7 +648,7 @@ type EventDemocracyCancelled struct {
 type EventDemocracyExecuted struct {
 	Phase           Phase
 	ReferendumIndex U32
-	Result          DispatchResult
+	Result          bool
 	Topics          []Hash
 }
 
