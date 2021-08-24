@@ -135,6 +135,9 @@ type EventRecords struct {
 	Elections_EmptyTerm                []EventElectionsEmptyTerm                //nolint:stylecheck,golint
 	Elections_ElectionError            []EventElectionsElectionError            //nolint:stylecheck,golint
 	Elections_MemberKicked             []EventElectionsMemberKicked             //nolint:stylecheck,golint
+	Elections_Renounced                []EventElectionsRenounced                //nolint:stylecheck,golint
+	Elections_CandidateSlashed         []EventElectionsCandidateSlashed         //nolint:stylecheck,golint
+	Elections_SeatHolderSlashed        []EventElectionsSeatHolderSlashed        //nolint:stylecheck,golint
 	Identity_IdentitySet               []EventIdentitySet                       //nolint:stylecheck,golint
 	Identity_IdentityCleared           []EventIdentityCleared                   //nolint:stylecheck,golint
 	Identity_IdentityKilled            []EventIdentityKilled                    //nolint:stylecheck,golint
@@ -185,6 +188,18 @@ type EventRecords struct {
 	Treasury_Burnt                     []EventTreasuryBurnt                     //nolint:stylecheck,golint
 	Treasury_Rollover                  []EventTreasuryRollover                  //nolint:stylecheck,golint
 	Treasury_Deposit                   []EventTreasuryDeposit                   //nolint:stylecheck,golint
+	Tips_NewTip                        []EventTipsNewTip                        //nolint:stylecheck,golint
+	Tips_TipClosing                    []EventTipsTipClosing                    //nolint:stylecheck,golint
+	Tips_TipClosed                     []EventTipsTipClosed                     //nolint:stylecheck,golint
+	Tips_TipRetracted                  []EventTipsTipRetracted                  //nolint:stylecheck,golint
+	Tips_TipSlashed                    []EventTipsTipSlashed                    //nolint:stylecheck,golint
+	Bounties_BountyProposed            []EventBountyBountyProposed              //nolint:stylecheck,golint
+	Bounties_BountyRejected            []EventBountyBountyRejected              //nolint:stylecheck,golint
+	Bounties_BountyBecameActive        []EventBountyBountyBecameActive          //nolint:stylecheck,golint
+	Bounties_BountyAwarded             []EventBountyBountyAwarded               //nolint:stylecheck,golint
+	Bounties_BountyClaimed             []EventBountyBountyClaimed               //nolint:stylecheck,golint
+	Bounties_BountyCanceled            []EventBountyBountyCanceled              //nolint:stylecheck,golint
+	Bounties_BountyExtended            []EventBountyBountyExtended              //nolint:stylecheck,golint
 	Contracts_Instantiated             []EventContractsInstantiated             //nolint:stylecheck,golint
 	Contracts_Evicted                  []EventContractsEvicted                  //nolint:stylecheck,golint
 	Contracts_Restored                 []EventContractsRestored                 //nolint:stylecheck,golint
