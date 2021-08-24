@@ -19,12 +19,11 @@ package gsrpc_test
 import (
 	"fmt"
 	"math/big"
-	"time"
 
-	gsrpc "github.com/centrifuge/go-substrate-rpc-client/v4"
-	"github.com/centrifuge/go-substrate-rpc-client/v4/config"
-	"github.com/centrifuge/go-substrate-rpc-client/v4/signature"
-	"github.com/centrifuge/go-substrate-rpc-client/v4/types"
+	gsrpc "github.com/crustio/go-substrate-rpc-client/v4"
+	"github.com/crustio/go-substrate-rpc-client/v4/config"
+	"github.com/crustio/go-substrate-rpc-client/v4/signature"
+	"github.com/crustio/go-substrate-rpc-client/v4/types"
 )
 
 func Example_simpleConnect() {
@@ -191,13 +190,16 @@ func Example_makeASimpleTransfer() {
 		panic(err)
 	}
 
+	opts := types.SerDeOptions{NoPalletIndices: true}
+	types.SetSerDeOptions(opts)
+
 	meta, err := api.RPC.State.GetMetadataLatest()
 	if err != nil {
 		panic(err)
 	}
 
 	// Create a call, transferring 12345 units to Bob
-	bob, err := types.NewMultiAddressFromHexAccountID("0x8eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48")
+	bob, err := types.NewAddressFromHexAccountID("0x8eaf04151687736326c9fea17e25fc5287613693c912909cb226aa4794f26a48")
 	if err != nil {
 		panic(err)
 	}

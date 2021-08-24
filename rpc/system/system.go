@@ -17,7 +17,7 @@
 package system
 
 import (
-	"github.com/centrifuge/go-substrate-rpc-client/v4/client"
+	"github.com/crustio/go-substrate-rpc-client/v4/client"
 )
 
 // System exposes methods for retrieval of system data
