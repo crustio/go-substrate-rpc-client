@@ -1,6 +1,6 @@
 module github.com/crustio/go-substrate-rpc-client/v4
 
-go 1.16
+go 1.17
 
 require (
 	github.com/ChainSafe/go-schnorrkel v0.0.0-20210318173838-ccb5cd955283 // indirect
