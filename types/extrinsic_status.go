@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v4/scale"
 )
 
 // ExtrinsicStatus is an enum containing the result of an extrinsic submission

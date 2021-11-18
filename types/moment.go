@@ -21,7 +21,7 @@ import (
 	"math"
 	"time"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v4/scale"
 )
 
 const (

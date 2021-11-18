@@ -19,7 +19,7 @@ package types
 import (
 	"fmt"
 
-	"github.com/crustio/go-substrate-rpc-client/v3/scale"
+	"github.com/crustio/go-substrate-rpc-client/v4/scale"
 )
 
 // EventBalancesEndowed is emitted when an account is created with some free balance
@@ -1396,7 +1396,7 @@ type EventTipsTipClosed struct {
 }
 
 // EventTreasuryTipRetracted is emitted when a tip suggestion has been retracted.
-type EventTipsTipRetracted struct {
+gitype EventTipsTipRetracted struct {
 	Phase  Phase
 	Hash   Hash
 	Topics []Hash

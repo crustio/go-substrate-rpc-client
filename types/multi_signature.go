@@ -16,7 +16,7 @@
 
 package types
 
-import "github.com/crustio/go-substrate-rpc-client/v3/scale"
+import "github.com/crustio/go-substrate-rpc-client/v4/scale"
 
 // MultiSignature
 type MultiSignature struct {

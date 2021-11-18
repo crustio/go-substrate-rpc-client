@@ -17,8 +17,8 @@
 package state
 
 import (
-	"github.com/crustio/go-substrate-rpc-client/v3/client"
-	"github.com/crustio/go-substrate-rpc-client/v3/types"
+	"github.com/crustio/go-substrate-rpc-client/v4/client"
+	"github.com/crustio/go-substrate-rpc-client/v4/types"
 )
 
 // GetRuntimeVersion returns the runtime version at the given block

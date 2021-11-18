@@ -1,4 +1,4 @@
-module github.com/crustio/go-substrate-rpc-client/v3
+module github.com/crustio/go-substrate-rpc-client/v4
 
 go 1.16
 

@@ -21,7 +21,7 @@ import (
 	"strconv"
 	"time"
 
-	gethrpc "github.com/crustio/go-substrate-rpc-client/v3/gethrpc"
+	gethrpc "github.com/crustio/go-substrate-rpc-client/v4/gethrpc"
 )
 
 type Server struct {
