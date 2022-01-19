@@ -1396,7 +1396,7 @@ type EventTipsTipClosed struct {
 }
 
 // EventTreasuryTipRetracted is emitted when a tip suggestion has been retracted.
-gitype EventTipsTipRetracted struct {
+type EventTipsTipRetracted struct {
 	Phase  Phase
 	Hash   Hash
 	Topics []Hash
