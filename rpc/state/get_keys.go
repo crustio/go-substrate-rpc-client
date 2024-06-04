@@ -47,3 +47,12 @@ func (s *State) getKeys(prefix types.StorageKey, blockHash *types.Hash) ([]types
 	}
 	return keys, err
 }
+
+func (s *State) GetKeysPaged(prefix string, size uint32, startKey string, blockHash *types.Hash) ([]string, error) {
+	var res []string
+	err := client.CallWithBlockHash(s.client, &res, "state_getKeysPaged", blockHash, prefix, size, startKey)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
+}
